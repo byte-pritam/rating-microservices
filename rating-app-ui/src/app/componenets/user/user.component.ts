@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   userEntity : User[]=[];
   userFlag:string="users";
   userForm: FormGroup;
+  submitted: boolean =false;
 
   constructor(private service: UserService, 
     private fb: FormBuilder
@@ -22,9 +23,9 @@ export class UserComponent implements OnInit {
 ){
 
   this.userForm = this.fb.group({
-    name: [Validators.required],
-    email :[Validators.required],
-    about: [Validators.required]
+    name: ['', Validators.required],
+    email :['',Validators.required],
+    about: ['',Validators.required]
    })
 }
 
@@ -40,14 +41,31 @@ export class UserComponent implements OnInit {
     )}
 
     addUser(){
-    console.log(this.userForm.value);
-    this.service.saveUser(this.userForm.value).subscribe(res =>{
-      console.log(res);
-    })
+    
+    this.submitted = true;
+    if(this.userForm.valid){
+      console.log(this.userForm.value);
+      this.service.saveUser(this.userForm.value).subscribe(res =>{
+        console.log(res);
+      })
+    }
+    else{
+      console.log("form not valid");
+    }
+   
     }
 
     buttonClick(val:string){
         this.userFlag = val;
+    }
+
+    clearField(){
+     console.log("user click")
+      this.userForm.reset();
+      this.submitted= false;
+      // this.userForm.value.name='';
+      // this.userForm.value.email='';
+      // this.userForm.value.about='';
     }
 
 }

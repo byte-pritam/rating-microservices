@@ -4,3 +4,32 @@
     display: flex !important;
     padding: .5rem;
 }
+
+.container-div{
+    display: flex;
+    justify-content: center;
+}
+
+.form-grp{
+    border: 2px solid darkgreen;
+    padding: 22px;
+}
+
+.btn-grp{
+    display: flex;
+    justify-content: end;
+}
+.btn-clr{
+    margin-right: 17px;
+}
+
+.row-custom{
+    width: 40rem;
+}
+.table-container{
+    display: flex;
+    justify-content: center;
+}
+.table-body{
+    width: 90%;
+}

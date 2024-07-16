@@ -5,29 +5,43 @@
 </div>
 
 <div class="container-div" *ngIf="userFlag == 'users'">
-    <form class="form-grp" [formGroup]="userForm" > 
+    <form class="form-grp" [formGroup]="userForm"  > 
         <div class="mb-3 row row-custom">
             <label for="inputName" class="col-sm-2 col-form-label">Name :</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputName" formControlName="name">
+              <span class="text-danger"
+              *ngIf="(userForm.controls.name.touched || submitted) && userForm.controls.name.errors?.required">
+              Name field is required
+              </span>
             </div>
+           
         </div>
         <div class="mb-3 row row-custom">
             <label for="inputEmail" class="col-sm-2 col-form-label">Email :</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="inputEmail" formControlName="email">
+              <span class="text-danger"
+              *ngIf="(userForm.controls.email.touched || submitted) && userForm.controls.email.errors?.required">
+              Email field is required
+              </span>
             </div>
         </div>
         <div class="mb-3 row row-custom">
             <label for="inputAbout" class="col-sm-2 col-form-label" >About :</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputAbout" formControlName="about">
+              <textarea type="text" class="form-control" id="inputAbout" formControlName="about"> </textarea>
+             
+              <span class="text-danger"
+              *ngIf="(userForm.controls.about.touched || submitted) && userForm.controls.about.errors?.required">
+              About field is required
+              </span>
             </div>
         </div>
 
         <div class="btn-grp" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-warning btn-clr">Clear</button>
-            <button type="button" class="btn btn-outline-success" (click)="addUser()" >Add user</button>
+            <button type="button" class="btn btn-outline-warning btn-clr" (click)="clearField()" >Clear</button>
+            <button type="button" class="btn btn-outline-success"(click)="addUser()" >Add user</button>
           </div>
 
     </form>
@@ -37,7 +51,7 @@
 
     <div class="table-body">
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="thead-light">
               <tr>
                 <th scope="col">Sr No</th>
                 <th scope="col">User Id</th>
@@ -47,7 +61,7 @@
                 <th scope="col">Ratings</th>
               </tr>
             </thead>
-            <tbody>
+            <!-- <tbody>
               <tr *ngFor="let user of userList; let i = index" >
                 <th scope="row"> {{i+1}} </th>
                 <td> {{user.userId}} </td>
@@ -55,6 +69,26 @@
                 <td> {{user.email}} </td>
                 <td> {{user.about}} </td>
                 <td> {{user.ratings}} </td>
+              </tr>
+            </tbody> -->
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
               </tr>
             </tbody>
           </table>
