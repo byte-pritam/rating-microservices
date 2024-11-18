@@ -18,3 +18,12 @@ spring:
           uri: lb://HOTEL-SERVICE
           predicates:
             - Path=/hotel/**
+
+okta:
+  oauth2:
+    issuer: https://dev-95951055.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oai8iz4z44rpcAYD5d7
+    client-secret: _9gCZPC02tWllUskwfxpU1k3u5jbzIgexA1-reJ7NGu16wk2GT8VzSD-FemY4E6H
+    scopes: openid, profile, email, offline_access
+
